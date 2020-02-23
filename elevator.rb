@@ -10,4 +10,17 @@ class Elevator
     @queued_floors = []
     @current_floor = 1
   end
+
+  def call(floor)
+    @queued_floors << floor
+    # move
+  end
+
+  def move
+    if @queued_floors.empty?
+      @current_floor = @parked_floor
+    else
+      @current_floor = @queued_floors.shift
+    end
+  end
 end
