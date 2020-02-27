@@ -39,4 +39,15 @@ RSpec.describe 'Test that the elevator' do
       expect(@elevator.current_floor).to eq(@elevator.parked_floor)
     end
   end
+
+  it 'moves at a normal speed from floor to floor' do
+    @elevator.call(4)
+    start_time = Time.now
+    @elevator.move
+    end_time = Time.now
+
+    #5 seconds to move from one floor to the next
+    difference = end_time - start_time
+    expect(difference).to be > 20
+  end
 end
