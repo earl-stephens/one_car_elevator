@@ -13,7 +13,6 @@ class Elevator
 
   def call(floor)
     @queued_floors << floor
-    # move
   end
 
   def move
