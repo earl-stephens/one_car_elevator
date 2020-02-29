@@ -17,8 +17,21 @@ class Elevator
 
   def move
     if @queued_floors.empty?
+      floor_difference = (@current_floor..@parked_floor)
+      floor_difference.each do |floor|
+        sleep 5
+      end
       @current_floor = @parked_floor
+    elsif @queued_floors[0] > @current_floor
+      floor_difference = (@current_floor..@queued_floors[0])
+      floor_difference.each do |floor|
+        sleep 5
+      end
+      @current_floor = @queued_floors.shift
     else
+      @current_floor.downto(@queued_floors[0]) do |floor|
+        sleep 5
+      end
       @current_floor = @queued_floors.shift
     end
   end
