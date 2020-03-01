@@ -50,4 +50,10 @@ RSpec.describe 'Test that the elevator' do
     difference = end_time - start_time
     expect(difference).to be > 20
   end
+
+  it 'displays the current floor' do
+    @elevator.call(5)
+
+    expect{@elevator.move}.to output(/[1..5]/).to_stdout
+  end
 end
